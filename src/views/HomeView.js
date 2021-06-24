@@ -9,7 +9,8 @@ state ={
 }
 
   async componentDidMount(){
-      const response = await axios.get('https://api.themoviedb.org/3/trending/movie/day?api_key=0823a515d685f87a50f7a5f1575b73b6');
+    const API_KIY = '0823a515d685f87a50f7a5f1575b73b6';
+      const response = await axios.get(`https://api.themoviedb.org/3/trending/movie/day?api_key=${API_KIY}`);
 
     this.setState({moviesPopular: response.data.results})
     }
