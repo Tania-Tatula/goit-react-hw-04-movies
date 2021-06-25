@@ -3,8 +3,8 @@ import { Route, NavLink, Switch } from "react-router-dom";
 import HomeView from "./views/HomeView";
 import MoviesPage from "./views/MoviesPage";
 import MovieDetailsPage from "./views/MovieDetailsPage";
-// import Cast from "./views/Cast";
-// import Reviews from "./views/Reviews";
+import Cast from "./components/Cast";
+import Reviews from "./components/Reviews";
 // import NotFoundView from "./views/NotFoundVievs";
 import "./style.css";
 
@@ -39,8 +39,8 @@ const App = () => {
         <Route exact path='/' component={HomeView} />
         <Route exact path='/movies' component={MoviesPage} />
         <Route exact path='/movies/:movieId' component={MovieDetailsPage} />
-        {/* <Route exact path='/movies/:movieId/cast' component={Cast} />
-        <Route exact path='/movies/:movieId/reviews' component={Reviews} /> */}
+        {/* <Route exact path='/movies/:movieId/cast' component={Cast} /> */}
+        {/* <Route exact path='/movies/:movieId/reviews' component={Reviews} /> */}
         {/* <Route component={HomeView} /> */}
       </Switch>
     </div>
