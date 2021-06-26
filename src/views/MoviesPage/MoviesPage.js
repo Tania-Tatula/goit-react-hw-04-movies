@@ -1,7 +1,7 @@
 import { Component } from "react";
 import axios from "axios";
 import MovieSerch from './MovieSertch';
-import MoviesLists from "../../components/MoviesLists";
+import MoviesList from "../../components/MoviesList";
 
 class MoviesPage extends Component {
   state = {
@@ -34,6 +34,7 @@ class MoviesPage extends Component {
     const response = await axios.get(
       ` https://api.themoviedb.org/3/search/movie?api_key=${API_KIY}&language=en-US&page=1&include_adult=false&query=${movieQuery}`
     );
+    console.log(response.data.results);
     this.setState({ movies: response.data.results });
   }
 
@@ -46,7 +47,7 @@ class MoviesPage extends Component {
             {/* {this.state.movies.map(movie => <li key ={movie.id}>
             <Link to={`${this.props.match.url}/${movie.id}`} >{movie.title}</Link>
             </li>)} */}
-            <MoviesLists lists ={this.state.movies} url={this.props.match.url}/>
+            <MoviesList lists ={this.state.movies} />
 
       </>
     );

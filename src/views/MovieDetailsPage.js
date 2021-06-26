@@ -3,14 +3,17 @@ import axios from "axios";
 import { Link, Route, Switch } from "react-router-dom";
 import Cast from "../components/Cast";
 import Reviews from "../components/Reviews";
+import BtnBack from "../components/BtnBack";
 
 class MovieDetailsPage extends Component {
   state = {
     genres: [],
     id: null,
     title: null,
-    backdrop_path: null,
+    poster_path: null,
     overview: null,
+    popularity: null,
+    release_date: null,
   };
 
   async componentDidMount() {
@@ -20,18 +23,26 @@ class MovieDetailsPage extends Component {
     const response = await axios.get(
       `https://api.themoviedb.org/3/movie/${movieId}?api_key=${API_KIY}&language=en-US`
     );
+    console.log(response.data);
     this.setState({ ...response.data });
   }
 
+
   render() {
-    const { genres, id, title, backdrop_path, overview } = this.state;
-    const imgUrl = `${backdrop_path}`;
-    const baseImgUrl = "https://image.tmdb.org/t/p/w400" + imgUrl;
+    const { genres, id, title, poster_path, overview, popularity, release_date } = this.state;
+    const imgUrl = `${poster_path}`;
+    const baseImgUrl = "https://image.tmdb.org/t/p/w300" + imgUrl;
+    const {match} = this.props;
+    const date = (`${release_date}`).substr(0, 4);
+
 
     return (
       <>
+      <BtnBack />
+
         <div key={id}>
-          <h1>{title}</h1>
+          <h1>{title} ({date})</h1>
+          <p>User Score: {Math.round(popularity)}%</p>
           <img src={baseImgUrl} alt={title}></img>
           <h2>Overview</h2>
           <p>{overview}</p>
@@ -47,22 +58,23 @@ class MovieDetailsPage extends Component {
 
             <ul>
               <li>
-                <Link to={`${this.props.match.url}/cast`}>Cast</Link>
+                <Link to={`${match.url}/cast`}>Cast</Link>
               </li>
               <li>
-                <Link to={`${this.props.match.url}/reviews`}>Reviews</Link>
+                <Link to={`${match.url}/reviews`}>Reviews</Link>
               </li>
             </ul>
 
             <Switch>
               <Route
                 exact
-                path={`${this.props.match.path}/cast`}
+                path={`${match.path}/cast`}
                 component={Cast}
               />
+
               <Route
                 exact
-                path={`${this.props.match.path}/reviews`}
+                path={`${match.path}/reviews`}
                 component={Reviews}
               />
             </Switch>

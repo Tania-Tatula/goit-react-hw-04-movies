@@ -1,6 +1,6 @@
 import axios from "axios";
 import { Component } from "react";
-import MoviesLisrs from '../components/MoviesLists';
+import MoviesList from '../components/MoviesList';
 
 class HomeView extends Component {
 state ={
@@ -25,7 +25,7 @@ state ={
             <Link to={`${this.props.match.url}movies/${movie.id}`} >{movie.title}</Link>
             </li>)} */}
 
-            <MoviesLisrs lists ={this.state.moviesPopular} url={this.props.match.url}/>
+            <MoviesList lists ={this.state.moviesPopular}/>
     </ul>
     </>
     )
