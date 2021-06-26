@@ -1,7 +1,7 @@
 import "./App.css";
 import { Route, NavLink, Switch } from "react-router-dom";
 import HomeView from "./views/HomeView";
-import MoviesPage from "./views/MoviesPage";
+import MoviesPage from "./views/MoviesPage/MoviesPage";
 import MovieDetailsPage from "./views/MovieDetailsPage";
 import Cast from "./components/Cast";
 import Reviews from "./components/Reviews";
@@ -50,4 +50,3 @@ const App = () => {
 export default App;
 
 
-// 0823a515d685f87a50f7a5f1575b73b6

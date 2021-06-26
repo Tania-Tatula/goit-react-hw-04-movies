@@ -13,7 +13,6 @@ class Cast extends Component {
     const response = await axios.get(
       `https://api.themoviedb.org/3/movie/${movieId}/credits?api_key=${API_KIY}&language=en-US`
     );
-    console.log(response.data.cast);
     this.setState({ cast: response.data.cast });
   }
 

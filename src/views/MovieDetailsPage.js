@@ -20,7 +20,6 @@ class MovieDetailsPage extends Component {
     const response = await axios.get(
       `https://api.themoviedb.org/3/movie/${movieId}?api_key=${API_KIY}&language=en-US`
     );
-    console.log(response.data);
     this.setState({ ...response.data });
   }
 

@@ -1,7 +1,6 @@
 import axios from "axios";
 import { Component } from "react";
-import { Link } from "react-router-dom";
-
+import MoviesLisrs from '../components/MoviesLists';
 
 class HomeView extends Component {
 state ={
@@ -22,9 +21,11 @@ state ={
     return (
 <>
     <ul>
-        {this.state.moviesPopular.map(movie => <li key ={movie.id}>
+        {/* {this.state.moviesPopular.map(movie => <li key ={movie.id}>
             <Link to={`${this.props.match.url}movies/${movie.id}`} >{movie.title}</Link>
-            </li>)}
+            </li>)} */}
+
+            <MoviesLisrs lists ={this.state.moviesPopular} url={this.props.match.url}/>
     </ul>
     </>
     )
