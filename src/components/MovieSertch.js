@@ -2,9 +2,8 @@ import { Component } from "react";
 
 export default class MoviesSerch extends Component {
   state = {
-    query: '',
+    query: "",
   };
-
 
   handleChange = (e) => {
     this.setState({ query: e.currentTarget.value });
@@ -14,18 +13,13 @@ export default class MoviesSerch extends Component {
     e.preventDefault();
     this.props.onSubmit(this.state.query);
 
-
-    this.setState({ query: '' });
+    this.setState({ query: "" });
   };
 
-  
-  
-
   render() {
-
     return (
-      <>
-            <form className='SearchForm' onSubmit={this.handleSubmit}>
+      <div className='movie-serch'>
+        <form className='SearchForm' onSubmit={this.handleSubmit}>
           <button type='submit' className='SearchForm-button'>
             <span className='SearchForm-button-label'>Search</span>
           </button>
@@ -40,10 +34,7 @@ export default class MoviesSerch extends Component {
             placeholder='Search movie'
           />
         </form>
-
-      </>
+      </div>
     );
   }
 }
-
-

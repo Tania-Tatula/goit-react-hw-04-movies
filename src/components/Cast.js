@@ -21,10 +21,11 @@ class Cast extends Component {
 
     return (
       <>
-        <ul>
+        <ul className='Actor-list'>
           {cast.map((actor) => (
-            <li key={actor.id}>
+            <li key={actor.id} className='Actor-item'>
               <img
+                className='Actor-img'
                 src={"https://image.tmdb.org/t/p/w400" + actor.profile_path}
                 alt={actor.name}
               ></img>

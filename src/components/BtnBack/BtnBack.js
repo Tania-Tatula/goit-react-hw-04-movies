@@ -16,7 +16,11 @@ class BtnBack extends Component {
 
   render() {
     return (
-      <button variant='contained' onClick={this.renderBackUrl}>
+      <button
+        variant='contained'
+        onClick={this.renderBackUrl}
+        className='BackBtn'
+      >
         Back
       </button>
     );

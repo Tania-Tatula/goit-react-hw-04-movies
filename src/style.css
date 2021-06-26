@@ -1,7 +1,190 @@
 .NavLink {
+  margin-left: 20px;
+  margin-bottom: 20px;
   font-size: 20px;
   color: black;
 }
 .NavLink-activ {
   color: brown;
+  background-color: burlywood;
+}
+
+.Preloader {
+  z-index: 1001;
+  text-align: center;
+}
+
+.preloader__row {
+  position: relative;
+  top: 50%;
+  left: 50%;
+  width: 70px;
+  height: 70px;
+  margin-top: -200%;
+  margin-left: -35%;
+  text-align: center;
+  animation: preloader-rotate 2s infinite linear;
+}
+
+.preloader__item {
+  position: absolute;
+  display: inline-block;
+  top: 0;
+  background-color: #337ab7;
+  border-radius: 100%;
+  width: 35px;
+  height: 35px;
+  animation: preloader-bounce 2s infinite ease-in-out;
+}
+
+.preloader__item:last-child {
+  top: auto;
+  bottom: 0;
+  animation-delay: -1s;
+}
+
+@keyframes preloader-rotate {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes preloader-bounce {
+  0%,
+  100% {
+    transform: scale(0);
+  }
+
+  50% {
+    transform: scale(1);
+  }
+}
+
+/* стилі для домашньої сторінки */
+
+.Nav {
+  text-align: center;
+  border-bottom: rgb(91, 88, 87) solid 2px;
+  margin-bottom: 10px;
+}
+
+.movies-lists {
+  text-align: center;
+  font-size: 18px;
+}
+
+/* стилі для сторінки пошуку */
+.movie-serch {
+  text-align: center;
+  margin-bottom: 20px;
+}
+.SearchForm {
+  display: flex;
+  margin-left: auto;
+  margin-right: auto;
+  align-items: center;
+  width: 50%;
+  max-width: 600px;
+  background-color: #fff;
+  border-radius: 3px;
+  overflow: hidden;
+  text-align: center;
+}
+
+.SearchForm-button {
+  display: inline-block;
+  width: 48px;
+  height: 48px;
+  border: 0;
+  background-image: url("https://image.flaticon.com/icons/svg/149/149852.svg");
+  background-size: 40%;
+  background-repeat: no-repeat;
+  background-position: center;
+  opacity: 0.6;
+  transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+  outline: none;
+}
+
+.SearchForm-button:hover {
+  opacity: 1;
+}
+
+.SearchForm-button-label {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  clip-path: inset(50%);
+  border: 0;
+}
+
+.SearchForm-input {
+  display: inline-block;
+  width: 100%;
+  font: inherit;
+  font-size: 20px;
+  border: none;
+  outline: none;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+.SearchForm-input::placeholder {
+  font: inherit;
+  font-size: 18px;
+}
+
+/* стилі для сторінки з фільмом */
+
+.MoviePage {
+  display: flex;
+  text-align: left;
+  margin: 10px;
+}
+
+.MoviePage-block {
+  margin-left: 10px;
+  line-height: 3;
+}
+
+.MoviePage-img {
+  height: 500px;
+}
+
+.MoviePage-menu {
+  border-bottom: rgb(91, 88, 87) solid 2px;
+  border-top: rgb(91, 88, 87) solid 2px;
+
+  text-align: left;
+  margin: 20px;
+}
+
+.Actor-list {
+  margin: 10px;
+  line-height: 1.5;
+}
+.Actor-item {
+  margin: 15px;
+}
+
+.Actor-img {
+  height: 200px;
+}
+
+.BackBtn {
+  display: inline-block;
+  width: 100px;
+  height: 25px;
+  margin: 10px;
+  font-size: 15px;
+  border-radius: 5px;
+}
+
+.BackBtn:hover,
+.BackBtn:focus {
+  background-color: rgb(85, 85, 145);
 }

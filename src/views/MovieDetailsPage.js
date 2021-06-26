@@ -1,6 +1,6 @@
 import { Component } from "react";
 import axios from "axios";
-import { Link, Route, Switch } from "react-router-dom";
+import { NavLink, Route, Switch } from "react-router-dom";
 import Cast from "../components/Cast";
 import Reviews from "../components/Reviews";
 import BtnBack from "../components/BtnBack";
@@ -27,58 +27,73 @@ class MovieDetailsPage extends Component {
     this.setState({ ...response.data });
   }
 
-
   render() {
-    const { genres, id, title, poster_path, overview, popularity, release_date } = this.state;
+    const {
+      genres,
+      id,
+      title,
+      poster_path,
+      overview,
+      popularity,
+      release_date,
+    } = this.state;
     const imgUrl = `${poster_path}`;
     const baseImgUrl = "https://image.tmdb.org/t/p/w300" + imgUrl;
-    const {match} = this.props;
-    const date = (`${release_date}`).substr(0, 4);
-
+    const { match } = this.props;
+    const date = `${release_date}`.substr(0, 4);
 
     return (
       <>
-      <BtnBack />
+        <BtnBack />
 
-        <div key={id}>
-          <h1>{title} ({date})</h1>
-          <p>User Score: {Math.round(popularity)}%</p>
-          <img src={baseImgUrl} alt={title}></img>
-          <h2>Overview</h2>
-          <p>{overview}</p>
-          <h2>Genres</h2>
+        <div key={id} className='MoviePage'>
+          <div className='MoviePage-block'>
+            <img src={baseImgUrl} alt={title} className='MoviePage-img'></img>
+          </div>
+          <div className='MoviePage-block'>
+            <h1>
+              {title} ({date})
+            </h1>
+            <p>User Score: {Math.round(popularity)}%</p>
+            <h2>Overview</h2>
+            <p>{overview}</p>
+            <h3>Genres</h3>
+            <ul>
+              {genres.map((genre) => (
+                <li key={genre.id}>{genre.name}</li>
+              ))}
+            </ul>
+          </div>
+        </div>
+        <div className='MoviePage-menu'>
+          <h2>Additional information</h2>
+
           <ul>
-            {genres.map((genre) => (
-              <li key={genre.id}>{genre.name}</li>
-            ))}
+            <li>
+              <NavLink
+                to={`${match.url}/cast`}
+                className='NavLink'
+                activeClassName='NavLink-activ'
+              >
+                Cast
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
+                to={`${match.url}/reviews`}
+                className='NavLink'
+                activeClassName='NavLink-activ'
+              >
+                Reviews
+              </NavLink>
+            </li>
           </ul>
 
-          <div>
-            <h2>Additional information</h2>
+          <Switch>
+            <Route exact path={`${match.path}/cast`} component={Cast} />
 
-            <ul>
-              <li>
-                <Link to={`${match.url}/cast`}>Cast</Link>
-              </li>
-              <li>
-                <Link to={`${match.url}/reviews`}>Reviews</Link>
-              </li>
-            </ul>
-
-            <Switch>
-              <Route
-                exact
-                path={`${match.path}/cast`}
-                component={Cast}
-              />
-
-              <Route
-                exact
-                path={`${match.path}/reviews`}
-                component={Reviews}
-              />
-            </Switch>
-          </div>
+            <Route exact path={`${match.path}/reviews`} component={Reviews} />
+          </Switch>
         </div>
       </>
     );
