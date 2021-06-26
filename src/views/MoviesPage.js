@@ -1,7 +1,7 @@
 import { Component } from "react";
 import axios from "axios";
-import MovieSerch from "../../components/MovieSertch";
-import MoviesList from "../../components/MoviesList";
+import MovieSerch from "../components/MovieSertch";
+import MoviesList from "../components/MoviesList";
 
 class MoviesPage extends Component {
   state = {
