@@ -37,8 +37,6 @@ class MovieDetailsPage extends Component {
       popularity,
       release_date,
     } = this.state;
-    const imgUrl = `${poster_path}`;
-    const baseImgUrl = "https://image.tmdb.org/t/p/w300" + imgUrl;
     const { match } = this.props;
     const date = `${release_date}`.substr(0, 4);
 
@@ -47,8 +45,11 @@ class MovieDetailsPage extends Component {
         <BtnBack />
 
         <div key={id} className='MoviePage'>
-          <div className='MoviePage-block'>
-            <img src={baseImgUrl} alt={title} className='MoviePage-img'></img>
+          <div className='MoviePage-img-block'>{
+            poster_path ? 
+            <img src={`https://image.tmdb.org/t/p/w300${poster_path}`} alt={title} className='MoviePage-img'/> :
+            <p  className='MoviePage-noimg'>No photo</p>
+            }
           </div>
           <div className='MoviePage-block'>
             <h1>

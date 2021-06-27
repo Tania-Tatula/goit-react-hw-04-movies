@@ -1,4 +1,5 @@
 import { NavLink, withRouter } from "react-router-dom";
+import PropTypes from "prop-types";
 
 const MoviesList = ({ lists, match, location }) => {
   let movieUrl = match.url.includes("movies") ? "" : "movies";
@@ -15,4 +16,12 @@ const MoviesList = ({ lists, match, location }) => {
     </li>
   ));
 };
+
+MoviesList.propTypes = {
+  lists: PropTypes.array.isRequired,
+  location: PropTypes.object.isRequired,
+  match: PropTypes.object.isRequired,
+};
+
+
 export default withRouter(MoviesList);

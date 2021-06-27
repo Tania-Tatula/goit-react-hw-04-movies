@@ -22,15 +22,22 @@ class Cast extends Component {
     return (
       <>
         <ul className='Actor-list'>
-          {cast.map((actor) => (
-            <li key={actor.id} className='Actor-item'>
-              <img
-                className='Actor-img'
-                src={"https://image.tmdb.org/t/p/w400" + actor.profile_path}
-                alt={actor.name}
-              ></img>
-              <h2>{actor.name}</h2>
-              <p>Character: {actor.character}</p>
+          {cast.map(({id, profile_path, name, character}) => (
+            <li key={id} className='Actor-item'>
+              <div className='Actor-img-block'>
+                {profile_path ? (
+                  <img
+                    className='Actor-img'
+                    src={"https://image.tmdb.org/t/p/w400" + profile_path}
+                    alt={name}
+                  />
+                ) : (
+                  <p className='MoviePage-noimg'>No photo</p>
+                )}
+              </div>
+
+              <h2>{name}</h2>
+              <p>Character: {character}</p>
             </li>
           ))}
         </ul>

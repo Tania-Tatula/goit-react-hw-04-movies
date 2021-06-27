@@ -141,6 +141,8 @@
 /* стилі для сторінки з фільмом */
 
 .MoviePage {
+  height: auto;
+  min-height: 400px;
   display: flex;
   text-align: left;
   margin: 10px;
@@ -152,7 +154,20 @@
 }
 
 .MoviePage-img {
-  height: 500px;
+  height: 400px;
+}
+
+.MoviePage-img-block {
+  display: block;
+  height: 400px;
+  width: 300px;
+  text-align: center;
+}
+
+.MoviePage-noimg {
+  margin-top: 50%;
+  margin-bottom: 50%;
+  font-size: 20px;
 }
 
 .MoviePage-menu {
@@ -173,6 +188,14 @@
 
 .Actor-img {
   height: 200px;
+  display: block;
+  text-align: center;
+}
+
+.Actor-img-block {
+  display: block;
+  height: 200px;
+  text-align: center;
 }
 
 .BackBtn {

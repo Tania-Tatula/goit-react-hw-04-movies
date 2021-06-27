@@ -1,6 +1,8 @@
 import { Component } from "react";
 import { withRouter } from "react-router-dom";
+import PropTypes from 'prop-types';
 import routes from "../../routes";
+
 
 class BtnBack extends Component {
   renderBackUrl = () => {
@@ -26,4 +28,10 @@ class BtnBack extends Component {
     );
   }
 }
+
+BtnBack.propTypes = {
+  location: PropTypes.object.isRequired,
+  history: PropTypes.object.isRequired,
+}
+
 export default withRouter(BtnBack);
