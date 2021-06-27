@@ -45,11 +45,16 @@ class MovieDetailsPage extends Component {
         <BtnBack />
 
         <div key={id} className='MoviePage'>
-          <div className='MoviePage-img-block'>{
-            poster_path ? 
-            <img src={`https://image.tmdb.org/t/p/w300${poster_path}`} alt={title} className='MoviePage-img'/> :
-            <p  className='MoviePage-noimg'>No photo</p>
-            }
+          <div className='MoviePage-img-block'>
+            {poster_path ? (
+              <img
+                src={`https://image.tmdb.org/t/p/w300${poster_path}`}
+                alt={title}
+                className='MoviePage-img'
+              />
+            ) : (
+              <p className='MoviePage-noimg'>No photo</p>
+            )}
           </div>
           <div className='MoviePage-block'>
             <h1>
