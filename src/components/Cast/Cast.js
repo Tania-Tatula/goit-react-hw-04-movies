@@ -1,5 +1,5 @@
 import { Component } from "react";
-import axios from "axios";
+import Fetch from "../../servises/Fetch";
 
 class Cast extends Component {
   state = {
@@ -7,12 +7,10 @@ class Cast extends Component {
   };
 
   async componentDidMount() {
-    const API_KIY = "0823a515d685f87a50f7a5f1575b73b6";
     const { movieId } = this.props.match.params;
 
-    const response = await axios.get(
-      `https://api.themoviedb.org/3/movie/${movieId}/credits?api_key=${API_KIY}&language=en-US`
-    );
+    const response = await Fetch(movieId, "/credits");
+
     this.setState({ cast: response.data.cast });
   }
 
@@ -22,7 +20,7 @@ class Cast extends Component {
     return (
       <>
         <ul className='Actor-list'>
-          {cast.map(({id, profile_path, name, character}) => (
+          {cast.map(({ id, profile_path, name, character }) => (
             <li key={id} className='Actor-item'>
               <div className='Actor-img-block'>
                 {profile_path ? (

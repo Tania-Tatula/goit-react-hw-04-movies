@@ -1,5 +1,6 @@
 import { Component } from "react";
-import axios from "axios";
+// import axios from "axios";
+import Fetch from "../../servises/Fetch";
 
 class Reviews extends Component {
   state = {
@@ -7,13 +8,10 @@ class Reviews extends Component {
   };
 
   async componentDidMount() {
-    const API_KIY = "0823a515d685f87a50f7a5f1575b73b6";
     const { movieId } = this.props.match.params;
 
-    const response = await axios.get(
-      `https://api.themoviedb.org/3/movie/${movieId}/reviews?api_key=${API_KIY}&language=en-US&page=1`
-    );
-    console.log(response.data.results);
+    const response = await Fetch(movieId, "/reviews");
+
     this.setState({ authors: response.data.results });
   }
 

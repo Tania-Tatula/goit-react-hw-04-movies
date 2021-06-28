@@ -1,9 +1,9 @@
 import { Component } from "react";
-import axios from "axios";
 import { NavLink, Route, Switch } from "react-router-dom";
 import Cast from "../components/Cast";
 import Reviews from "../components/Reviews";
 import BtnBack from "../components/BtnBack";
+import Fetch from "../servises/Fetch";
 
 class MovieDetailsPage extends Component {
   state = {
@@ -17,13 +17,9 @@ class MovieDetailsPage extends Component {
   };
 
   async componentDidMount() {
-    const API_KIY = "0823a515d685f87a50f7a5f1575b73b6";
     const { movieId } = this.props.match.params;
 
-    const response = await axios.get(
-      `https://api.themoviedb.org/3/movie/${movieId}?api_key=${API_KIY}&language=en-US`
-    );
-    console.log(response.data);
+    const response = await Fetch(movieId, "");
     this.setState({ ...response.data });
   }
 
