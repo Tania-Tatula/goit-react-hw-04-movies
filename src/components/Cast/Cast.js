@@ -1,5 +1,6 @@
 import { Component } from "react";
 import Fetch from "../../servises/Fetch";
+// import axios from "axios";
 
 class Cast extends Component {
   state = {
@@ -7,9 +8,15 @@ class Cast extends Component {
   };
 
   async componentDidMount() {
+    // const API_KIY = "0823a515d685f87a50f7a5f1575b73b6";
     const { movieId } = this.props.match.params;
+    const urlProps = movieId + "/credits";
 
-    const response = await Fetch(movieId, "/credits");
+    // const response = await axios.get(
+    //   `https://api.themoviedb.org/3/movie/${movieId}/credits?api_key=${API_KIY}&language=en-US`
+    // );
+
+    const response = await Fetch(urlProps);
 
     this.setState({ cast: response.data.cast });
   }

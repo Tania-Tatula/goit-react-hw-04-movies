@@ -15,10 +15,7 @@ const MoviesPage = lazy(() =>
 const MovieDetailsPage = lazy(() =>
   import("./views/MovieDetailsPage" /*webpackChunkName *movie-details-page**/)
 );
-const NotFoundVievs = lazy(() =>
-import("./views/NotFoundVievs" /*webpackChunkName *not-found-vievs**/)
 
-);
 
 
 const App = () => {
