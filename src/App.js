@@ -32,7 +32,6 @@ const App = () => {
           <Route exact path={routes.home} component={HomeView} />
           <Route exact path={routes.moviesPage} component={MoviesPage} />
           <Route path={routes.movieDetailsPage} component={MovieDetailsPage} />
-          <Redirect from={routes.movieDetailsPage} to={NotFoundVievs} />
 
           <Route component={NotFoundVievs} />
         </Switch>
