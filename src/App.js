@@ -1,6 +1,7 @@
 import "./App.css";
 import React, { Suspense, lazy } from "react";
 import { Route, Switch } from "react-router-dom";
+import { Redirect } from 'react-router';
 import Loader from "./components/Loader";
 import AppBar from "./components/AppBar";
 import "./style.css";
@@ -15,6 +16,11 @@ const MoviesPage = lazy(() =>
 const MovieDetailsPage = lazy(() =>
   import("./views/MovieDetailsPage" /*webpackChunkName *movie-details-page**/)
 );
+const NotFoundVievs = lazy(() =>
+import("./views/NotFoundVievs" /*webpackChunkName *not-found-vievs**/)
+
+);
+
 
 const App = () => {
   return (
@@ -26,7 +32,9 @@ const App = () => {
           <Route exact path={routes.home} component={HomeView} />
           <Route exact path={routes.moviesPage} component={MoviesPage} />
           <Route path={routes.movieDetailsPage} component={MovieDetailsPage} />
-          <Route component={HomeView} />
+          <Redirect from={routes.movieDetailsPage} to={NotFoundVievs} />
+
+          <Route component={NotFoundVievs} />
         </Switch>
       </Suspense>
     </>
