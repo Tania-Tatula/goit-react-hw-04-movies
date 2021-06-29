@@ -36,7 +36,7 @@ class MovieDetailsPage extends Component {
       title,
       poster_path,
       overview,
-      popularity,
+      vote_average,
       release_date,
     } = this.state;
     const { match } = this.props;
@@ -62,7 +62,7 @@ class MovieDetailsPage extends Component {
             <h1>
               {title} ({date})
             </h1>
-            <p>User Score: {Math.round(popularity)}%</p>
+            <p>User Score: {vote_average * 10}%</p>
             <h2>Overview</h2>
             <p>{overview}</p>
             <h3>Genres</h3>
