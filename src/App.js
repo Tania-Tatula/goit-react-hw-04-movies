@@ -1,7 +1,6 @@
 import "./App.css";
 import React, { Suspense, lazy } from "react";
 import { Route, Switch } from "react-router-dom";
-import { Redirect } from 'react-router';
 import Loader from "./components/Loader";
 import AppBar from "./components/AppBar";
 import "./style.css";
@@ -33,7 +32,7 @@ const App = () => {
           <Route exact path={routes.moviesPage} component={MoviesPage} />
           <Route path={routes.movieDetailsPage} component={MovieDetailsPage} />
 
-          <Route component={NotFoundVievs} />
+          <Route component={HomeView} />
         </Switch>
       </Suspense>
     </>
