@@ -24,6 +24,7 @@ class Cast extends Component {
   render() {
     const { cast } = this.state;
 
+
     return (
       <>
         <ul className='Actor-list'>

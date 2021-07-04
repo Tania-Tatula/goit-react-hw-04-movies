@@ -1,10 +1,12 @@
 import { Component } from "react";
-import { NavLink, Route, Switch } from "react-router-dom";
+import { NavLink, Redirect, Route, Switch } from "react-router-dom";
 import Cast from "../components/Cast";
 import Reviews from "../components/Reviews";
 import BtnBack from "../components/BtnBack";
 import Fetch from "../servises/Fetch";
+import {lazy} from "react"; 
 // import axios from "axios";
+
 
 class MovieDetailsPage extends Component {
   state = {
@@ -18,7 +20,8 @@ class MovieDetailsPage extends Component {
   };
 
   async componentDidMount() {
-    const { movieId } = this.props.match.params;
+    try{
+      const { movieId } = this.props.match.params;
     // const API_KIY = "0823a515d685f87a50f7a5f1575b73b6";
     // const response = await axios.get(
     //   `https://api.themoviedb.org/3/movie/${movieId}?api_key=${API_KIY}&language=en-US`
@@ -26,8 +29,18 @@ class MovieDetailsPage extends Component {
     // console.log(response.data);
 
     const response = await Fetch(movieId);
-    this.setState({ ...response.data });
+    this.setState({ ...response.data });  
+    }
+    catch{
+      this.setState({redirect: null});  
+
+    }
+
   }
+
+   
+
+
 
   render() {
     const {
@@ -38,12 +51,22 @@ class MovieDetailsPage extends Component {
       overview,
       vote_average,
       release_date,
+      redirect,
     } = this.state;
     const { match } = this.props;
     const date = `${release_date}`.substr(0, 4);
 
+  if (redirect === null) {
+
+    return <Redirect to="/" />
+
+
+  }
+   
     return (
       <>
+      
+       
         <BtnBack />
 
         <div key={id} className='MoviePage'>
@@ -97,14 +120,19 @@ class MovieDetailsPage extends Component {
             </li>
           </ul>
 
-          <Switch>
+          <Switch> 
+ 
             <Route exact path={`${match.path}/cast`} component={Cast} />
 
             <Route exact path={`${match.path}/reviews`} component={Reviews} />
+            
+
           </Switch>
         </div>
+  
       </>
     );
+    
   }
 }
 
